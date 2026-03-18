@@ -6,6 +6,7 @@
   <meta name="description" content="マインクラフト統合版（BE/PE）で自分だけのカスタムアイテムを作成する方法を、現役小学生開発者のSorannがプロ並みに詳しく解説！小学六年生でもBlockbenchを使えば簡単にアドオン制作が可能です。">
   <meta name="keywords" content="マイクラ統合版カスタムアイテム作り方, マイクラ統合版, マイクラアドオン作り方, マイクラアイテム作成, マイクラ統合版アドオン作成簡単, マイクラBEアドオン, マイクラPEアドオン, 統合版マイクラ開発, Blockbench使い方, マイクラ自作アイテム, マイクラコマンド, マイクラ攻略, マイクラ小学生開発者, マイクラRPG作り方, SORANNCRAFT, ソランクラフト, 統合版リソースパック作り方, 統合版ビヘイビアパック作り方, マイクラJavaScript, マイクラScriptAPI, マイクラモデリング, マイクラドット絵作成, マイクラテクスチャ作り方, 小学生プログラミング, マイクラ自作武器">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6126950806811993" crossorigin="anonymous"></script>
   <style>
     body {
       font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
@@ -178,6 +179,10 @@
       font-weight: 600;
       line-height: 1.4;
     }
+    .update-list li a {
+      text-decoration: none;
+      color: #2c7be5;
+    }
     .ver-tag {
       display: inline-block;
       background: #4caf50;
@@ -271,12 +276,14 @@
       border: 2px dashed #bbb;
       min-height: 250px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       color: #888;
       font-size: 14px;
       text-align: center;
       border-radius: 8px;
+      overflow: hidden;
     }
     .info-box {
       background: #fff8e1;
@@ -295,6 +302,13 @@
     ul.check-list li {
       margin-bottom: 10px;
       font-weight: 700;
+    }
+    code {
+      background: #2d3436;
+      color: #fab1a0;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
     }
     .back-to-top {
       position: fixed;
@@ -394,7 +408,7 @@
 
   <main>
     <div class="title-image" style="text-align:center; margin-bottom: 40px;">
-      <img src="SORANNCRAFT_title.png" style="max-width:100%; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));">
+      <img src="SORANNCRAFT_title.png" style="max-width:100%; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));" alt="カスタムアイテムの作り方タイトル">
     </div>
 
     <div class="toc" id="toc">
@@ -406,6 +420,7 @@
         <li><a href="#step3">手順3：アイテムの基本定義</a></li>
         <li><a href="#step4">手順4：IDとステータスの設定</a></li>
         <li><a href="#step5">手順5：テクスチャの描き込み</a></li>
+        <li><a href="#step6">【応用】さらに強力なアイテムにするために</a></li>
       </ul>
     </div>
 
@@ -423,7 +438,7 @@
     <div class="info-box">
       <span style="font-size: 20px; font-weight: 900; color: #d35400;">💡 準備しておくべきもの</span><br>
       <p style="font-size: 15px; margin-top: 10px;">
-        Minecraft Launcherは必ず最新版にしておきましょう。最新のアプデ情報やエンジンの変更をいち早くキャッチして、自分のアドオンに取り入れるのが開発のコツです！
+        Minecraft Launcherは必ず最新版にしておきましょう。最新のアプデ情報やエンジンの変更をいち早くキャッチして、自分のアドオンに取り入れるのが開発のコツです！また、コードを書くなら「VS Code」というソフトを導入すると、スペルミスを教えてくれるので超便利ですよ。
       </p>
     </div>
 
@@ -442,84 +457,94 @@
     <div class="image-box">
       <img src="blockbench言語設定.png" alt="プラグイン導入">
     </div>
-    <p>「プラグイン」メニューから<strong>「Minecraft Item Wizard」</strong>を検索してインストールします。これを使えば、アドオンに必要な難しいJSONファイルを自動で生成してくれるので、初心者でも安心です！</p>
+    <p>「プラグイン」メニューから<strong>「Minecraft Item Wizard」</strong>を検索してインストールします。これを使えば、アドオンに必要な難しいJSONファイルを自動で生成してくれるので、初心者でも安心です！まさに魔法のような機能です。</p>
 
     <h3 id="step3">手順3：アイテムの基本定義</h3>
-    <p>ウィザードを起動したら、「Create an Item!」をクリック。まずはベースとなるアイテムを選びますが、今回は「鉄インゴット」を例に進めていきます。</p>
+    <p>ウィザードを起動したら、「Create an Item!」をクリック。まずはベースとなるアイテムを選びますが、今回は「鉄インゴット」を例に進めていきます。ここで選ぶアイテムは、ゲーム内での「持ち方」に影響します。剣のように持ちたいなら「剣」を選びましょう！</p>
     <div class="image-box">
-      <img src="アイテム作成1.png">
+      <img src="アイテム作成1.png" alt="アイテムのベース選択">
     </div>
 
     <h3 id="step4">手順4：IDとステータスの設定</h3>
     <p>ここが開発の腕の見せ所です！アイテムに魂を吹き込みましょう。</p>
     <div class="image-box">
-      <img src="アイテム作成2.png">
+      <img src="アイテム作成2.png" alt="IDとステータス設定">
     </div>
     <ul class="check-list">
       <li><strong>表示名：</strong> ゲーム内で実際に見える名前。かっこいい名前を付けましょう！日本語も使えます。</li>
-      <li><strong>アイテムID：</strong> `sorann:super_sword` のように、自分の名前（ネームスペース）を最初に入れるのが、他のアドオンと混ざらないためのプロのコツです。</li>
+      <li><strong>アイテムID：</strong> <code>sorann:super_sword</code> のように、自分の名前（ネームスペース）を最初に入れるのが、他のアドオンと混ざらないためのプロのコツです。</li>
       <li><strong>スタック数：</strong> 1個しか持てないレア武器にするか、64個持てる素材にするか、用途に合わせて選べます。</li>
     </ul>
-    <p>「食べられるか」「攻撃力は？」などのステータス設定が終わったら、最後はフォルダに書き出しましょう（Export）。</p>
+    <p>「食べられるか」「攻撃力は？」などのステータス設定が終わったら、最後はフォルダに書き出しましょう（Export）。これでアドオンの基礎が完成します。</p>
 
     <h3 id="step5">手順5：テクスチャの描き込み</h3>
     <div class="image-box">
-      <img src="アイテム作成3.png">
+      <img src="アイテム作成3.png" alt="テクスチャ作成画面">
     </div>
-    <p>書き出すと、ベースとなる絵が出てきます。ここからは自分好みの色や形をドット絵で描いていきます。自分が描いた絵がマインクラフトのワールドに反映された時の感動は、何度味わっても最高ですよ！</p>
+    <p>書き出すと、ベースとなる絵が出てきます。ここからは自分好みの色や形をドット絵で描いていきます。Blockbench内の「ペイント」モードを使えば、リアルタイムで3Dモデルに色がつくのを確認できるので最高に楽しいです！自分が描いた絵がマインクラフトのワールドに反映された時の感動は、何度味わっても最高ですよ！</p>
 
-    <div style="background:#eef; padding:20px; border-radius:10px; border: 1px solid #ccd;">
-      <p style="text-align: center; margin-bottom: 0;">これにて **小学六年生の開発者Sorann** によるカスタムアイテム講座を終わります！(⌒∇⌒)<br>次はもっと高度な「スクリプトAPI」についても解説していくので、一緒に最強のアドオンを作りましょう！</p>
+    <h2 id="step6">【応用】さらに強力なアイテムにするために</h2>
+    <p>テクスチャが完成したら、次は「ビヘイビアパック」の中身をいじってみましょう。JSONファイルを少し書き換えるだけで、攻撃した相手を燃やしたり、持っている間だけ足が速くなるような効果も付けられます。これは「Components（コンポーネント）」という設定で行います。詳しくは次の記事で解説しますね！</p>
+
+    <div style="background:#eef; padding:20px; border-radius:10px; border: 1px solid #ccd; margin-top: 40px;">
+      <p style="text-align: center; margin-bottom: 0;">これにて **小学六年生の開発者Sorann** によるカスタムアイテム講座を終わります！(⌒∇⌒)<br>最初は難しく感じるかもしれませんが、一個完成させればあとは簡単です！次はもっと高度な「スクリプトAPI」についても解説していくので、一緒に最強のアドオンを作りましょう！質問があればコメント欄にどうぞ！</p>
     </div>
   </main>
 
-<aside class="sidebar-right">
-  <div class="sidebar-box">
-    <div class="sidebar-title">スポンサー広告</div>
-    <div class="ad-slot">
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6126950806811993" crossorigin="anonymous"></script>
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-6126950806811993"
-           data-ad-slot="7356904629"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-      <script>
-           (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-    </div>
-  </div>
-</aside>
-
+  <aside class="sidebar-right">
     <div class="sidebar-box">
       <div class="sidebar-title">🔥 人気の記事ランキング</div>
       <ul class="update-list">
-        <li><span style="color:#ff4757; font-weight:900;">1位</span> カスタムアイテムの作り方（この記事）</li>
-        <li><span style="color:#ff9800; font-weight:900;">2位</span> RPGボス「不死帝ソウラー」攻略設定</li>
-        <li><span style="color:#2c7be5; font-weight:900;">3位</span> Blockbenchでモデリング入門</li>
-        <li><span style="color:#666; font-weight:900;">4位</span> スクリプトで魔法の杖を作る方法</li>
+        <li><span style="color:#ff4757; font-weight:900;">1位</span> <a href="#">カスタムアイテムの作り方（この記事）</a></li>
+        <li><span style="color:#ff9800; font-weight:900;">2位</span> <a href="#">RPGボス「不死帝ソウラー」攻略設定</a></li>
+        <li><span style="color:#2c7be5; font-weight:900;">3位</span> <a href="#">Blockbenchでモデリング入門</a></li>
+        <li><span style="color:#666; font-weight:900;">4位</span> <a href="#">スクリプトで魔法の杖を作る方法</a></li>
+        <li><span style="color:#666; font-weight:900;">5位</span> <a href="#">アドオン作成で絶対守るべきIDの命名規則</a></li>
       </ul>
+    </div>
+
+    <div class="sidebar-box">
+      <div class="sidebar-title">スポンサー広告</div>
+      <div class="ad-slot">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6126950806811993"
+             crossorigin="anonymous"></script>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6126950806811993"
+             data-ad-slot="7356904629"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </div>
     </div>
 
     <div class="sidebar-box">
       <div class="sidebar-title">おすすめ攻略サイト</div>
-      <ul class="update-list" style="color: #2c7be5;">
-        <li>・Game8 [マインクラフト攻略]</li>
-        <li>・Minecraft Wiki (公式)</li>
-        <li>・Microsoft Learn (スクリプト解説)</li>
+      <ul class="update-list">
+        <li><a href="https://game8.jp/minecraft" target="_blank">▶ Game8 [マインクラフト攻略]</a></li>
+        <li><a href="https://minecraft.fandom.com/ja/wiki/Minecraft_Wiki" target="_blank">▶ Minecraft Wiki (公式)</a></li>
+        <li><a href="https://learn.microsoft.com/ja-jp/minecraft/creator/" target="_blank">▶ Microsoft Learn (開発者向け)</a></li>
+        <li><a href="https://www.blockbench.net/" target="_blank">▶ Blockbench公式サイト</a></li>
       </ul>
     </div>
     
     <div class="sidebar-box">
-      <div class="ad-slot" style="min-height: 200px; background: #eee;">現状はありません。</div>
+      <div class="sidebar-title">管理人のYoutube</div>
+      <p style="font-size: 13px; font-weight: bold;">最新の開発状況はYoutubeで発信中！フォローよろしくお願いします！</p>
+      <div style="background: #eee; padding: 10px; text-align: center; border-radius: 8px; font-size: 12px; color: #666;">
+        [Youtubeリンクボタン(準備中)]
+      </div>
     </div>
   </aside>
 </div>
 
-<a href="#top" class="back-to-top">▲</a>
+<a href="#top" class="back-to-top" title="トップへ戻る">▲</a>
 
 <footer>
   <p>© 2026 SORANNCRAFT - Project RPG & Minecraft Creative Guide (Created by Sorann - Grade 6)</p>
+  <p style="font-size: 12px; opacity: 0.6; margin-top: 10px;">Minecraft is a trademark of Mojang Synergies AB. This site is not an official Minecraft product.</p>
 </footer>
 
 </body>
