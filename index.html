@@ -423,19 +423,6 @@
       margin: 20px 0;
     }
 
-.fixed-ad-left {
-    position: fixed;   
-    left: 10px;    
-    top: 90%;          
-    transform: translateY(-50%);
-    z-index: 9999;    
-    background: white;    
-    padding: 5px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
 @media (max-width: 768px) {
     .fixed-ad-left {
         display: none;
@@ -444,24 +431,6 @@
   </style>
 </head>
 <body id="top">
-
-<div class="fixed-ad-left">
-    <script type="text/javascript">
-        imaf_partnerid = "68418";
-        imaf_siteid = "56908";
-        imaf_advid = "63927";
-        imaf_campaignid = "5774";
-        imaf_type = "Image";
-        imaf_width = "100";
-        imaf_height = "100";
-    </script>
-    <script type="text/javascript" src="//aff.i-mobile.co.jp/script/adspot_ifs.js?20130220"></script>
-
-    <div style="margin-top:5px;">
-        <a href="https://aff.i-mobile.co.jp/ad_link.ashx?pid=68418&advid=63928&psid=56908" target="_blank">インストールして遊ぶ</a>
-        <img src="//aff-imp.i-mobile.co.jp/empty.ashx?advid=63928&psid=56908" alt="" border="0" width="1" height="1">
-    </div>
-</div>
 
 <div class="lang-switch">
   <button class="lang-btn" id="langBtn" onclick="toggleLanguage()">English</button>
@@ -481,9 +450,6 @@
   </div>
 </header>
 
-<div style="text-align: center; margin: 15px 0;">
-  <script src="https://adm.shinobi.jp/s/80e0d18d7434575a51ff6ca5471c7a24"></script>
-  </div>
 <nav class="global-nav">
   <ul>
     <li><a href="index.html" id="gnavHome">ホーム</a></li>
@@ -507,20 +473,31 @@
       <a href="rpg-project.html" style="display: block; text-align: center; background: #ff4757; color: white; padding: 10px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: bold; box-shadow: 0 4px 0 #b3323d;" id="rpgStatusLink">開発状況を詳しく見る →</a>
     </div>
 
-    <div class="sidebar-box">
-      <div class="sidebar-title" id="newsTitle">⚡ 統合版 最新ニュース</div>
-      <ul class="update-list">
-        <li><span class="ver-tag new">1.20.7x</span><span id="news1">統合版アップデート！ボルトの挙動が修正。</span></li>
-        <li><span class="ver-tag">1.21</span><span id="news2">試験的機能に新構造物「トライアルチャンバー」追加！</span></li>
-        <li><span class="ver-tag fix">修正</span><span id="news3">Script APIにおけるUI表示バグが解消されました。</span></li>
-      </ul>
-    </div>
+<div class="sidebar-box">
+  <div class="sidebar-title" id="newsTitle">統合版 最新情報</div>
+  <ul class="update-list">
+    <li>
+      <span class="ver-tag new">1.20.7x</span>
+      <span id="news1">統合版のアップデートにより、ボルト関連の挙動が改善されました。</span>
+    </li>
+    <li>
+      <span class="ver-tag">1.21</span>
+      <span id="news2">試験的機能として、新たな構造物「トライアルチャンバー」が追加されています。</span>
+    </li>
+    <li>
+      <span class="ver-tag fix">修正</span>
+      <span id="news3">Script API における UI 表示に関する不具合が修正されました。</span>
+    </li>
+  </ul>
+</div>
     
     <div class="sidebar-box">
       <div class="sidebar-title" id="adminTitle">👤 運営者情報</div>
       <div style="font-size: 13px;" id="adminInfo">
         <strong>Sorann（ソラン）</strong><br>
-        マイクラ歴6年の中学一年生開発者として、日々アドオン制作に取り組みながら、プログラミングの魅力や創作の楽しさを発信しています。自分で試行錯誤しながら得た知識や経験をもとに、初心者でも理解しやすい形で技術や制作過程を紹介し、同じようにゲーム開発に挑戦したい人の力になれるよう活動しています。
+        マイクラ開発の最前線を走る中学一年生クリエイターが、6年にわたる研鑽の成果を「SORANNCRAFT」に凝縮。
+独学で習得した高度なScript APIや3Dモデリングの技術を、開発者ならではの視点で解りやすく言語化したコンテンツが最大の特徴です。
+単なる情報提供に留まらず、若きエンジニアとしての挑戦を通じて、読者の創作意欲を刺激する唯一無二の体験価値を提供します。
       </div>
     </div>
   </aside>
@@ -560,8 +537,12 @@
     </div>
 
     <h2 id="intro"><span id="h2Intro">はじめに：アドオン開発の魅力</span></h2>
-    <p id="pIntro1">どうも！SORANNCRAFT管理人のSorannです！僕は現在、中学一年生ですが、マインクラフトのアドオン開発に日々熱中しています。アドオン開発の最大の魅力は、自分が「こんな武器があったらいいな」「こんな魔法が使いたい！」と思ったアイデアを、そのまま形にできることです。通常のゲームプレイでは味わえない、創造主としての楽しみがそこにあります。</p>
-    <p>昨今の統合版マイクラは、従来のMOD（Java版）に匹敵する自由度を手に入れつつあります。特に1.20以降のアップデートでは、アイテムの挙動をJavaScriptで制御できる「Script API」や、新しい「custom_components」の登場により、バニラの枠を完全に超越した体験を自作できるようになりました。アドオン制作は、単なる遊びを超えて、論理的思考やデザインセンスを養う最高の学習教材でもあります。この記事では、僕がこれまでに培ってきたノウハウをすべて注ぎ込み、初心者から中級者まで満足できる「究極のカスタムアイテム制作ガイド」をお届けします。読み終わる頃には、あなたも自分だけのオリジナルアイテムをマイクラの世界に登場させることができるはずです！</p>
+    <p id="pIntro1">「遊び」を「開発」へ。中学一年生のエンジニアが贈る、統合版アドオン制作の極意。
+
+マインクラフト歴6年の英知を結集し、バニラの枠を超越する「究極のカスタムアイテム制作」のノウハウをここに完全公開します。
+1.20以降の革新的なScript APIやcustom_componentsを駆使し、理想の武器や魔法を具現化する「創造主としての視点」を伝授。
+単なる改造に留まらず、論理的思考とデザインセンスが交差するアドオン開発は、デジタル時代の新しい表現のカタチです。
+僕と一緒に、あなたの想像力がゲームの限界を塗り替える、新時代のマイクラライフをスタートさせましょう！</p>
 
     <h2 id="section1"><span id="h2Env">1. 開発環境を整える</span></h2>
     <p id="pEnv1">まず、制作を始める前に「武器」を揃えましょう。僕がおすすめする最強のツールセットは以下の3つです。これらがあるだけで、開発のスピードと品質が劇的に変わります。適当なメモ帳でJSONを書くのは卒業しましょう！</p>
@@ -638,9 +619,6 @@
         </script>
     </div>
 
-<div class="ad-left-align">
-  <script src="https://adm.shinobi.jp/s/d66044bb82b8ed903c17ee5ec4561fdf"></script>
-  </div>
     <section id="contact" class="section-full">
       <h2>お問い合わせ</h2>
       <p>アドオン制作に関する技術的な質問や、サイトの内容に関するフィードバック、コラボレーションの提案などは以下のフォームからお気軽にご連絡ください。僕は現在中学一年生のため、試験期間中や部活動（水泳部）の大会前などは返信が遅れることがありますが、いただいたメッセージにはすべて目を通し、可能な限り丁寧にお答えします。マイクラ開発者コミュニティを一緒に盛り上げていきましょう！あなたの「最高のアドオン」についての話を聞けるのを楽しみにしています！</p>
