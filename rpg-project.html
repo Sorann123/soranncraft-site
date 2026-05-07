@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6126950806811993" crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <title>【最新】PROJECT: RPG 開発状況・データアーカイブ｜SORANNCRAFT</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="keywords" content="マイクラRPG, マイクラ統合版アドオン, マイクラBEアドオン, マイクラPEアドオン, 統合版マイクラ攻略, アドオン作り方, カスタムアイテム, 独自モブ, レイドボス, 不死帝ソウラー, 凍土の災厄グラシヴエイ, 炎獄の魔獣焔牙イグニス, 涷牙剣, インフェルノソード, 氷縛の使者の剣, 勇者の剣, 氷の鎧, 極寒の守護石, フロストライト鉱石, 紅炎の鎧, 灼熱のヘルム, 焦炎剣, 紅炎の盾, 凍土の守護者の指輪, 氷晶の首飾り, 虚無の腕輪, 英雄の紋章, 経験値結晶, 転職ブロック, マイクラ職業, モグラン族, モグモグピッケル, ミミック, 宝箱怪獣, プルルン, オコリンボウ, ワンダリングデッド, 錬金骸, ヴォイドリーパー, 虚無の騎士, シャドウケープ, フロストヴァルゼオン, スクリプトAPI, Blockbench, マイクラモデリング, マイクラプログラミング, 小学生開発者, SORANNCRAFT, ソランクラフト, マイクラ配布ワールド, マイクラサバイバル">
-  <meta name="description" content="（小6が本気で作ったマイクラRPGアドオンの開発状況を公開中！不死帝ソウラーや伝説の武器、独自システムなど、僕がこれまでに勉強したScript APIとBlockbenchの技術を全部詰め込みました。最高にワクワクする冒険を、間もなく皆にお届けします！）">
+  <meta name="description" content="マインクラフト統合版での大規模RPGプロジェクト「PROJECT: RPG」の開発記録。100種以上のカスタムアイテムや独自モブの制作秘話、Blockbenchでのモデリング、スクリプトAPIの苦労話を公開中。">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6126950806811993" crossorigin="anonymous"></script>
   <style>
     body {
       font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
@@ -164,6 +163,27 @@
       font-size: 14px;
     }
 
+    .experience-story {
+      background: #fffbe6;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 0 10px 10px 0;
+    }
+
+    .code-block {
+      background: #2d2d2d;
+      color: #f8f8f2;
+      padding: 25px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+      font-size: 14px;
+      margin: 25px 0;
+      line-height: 1.6;
+      border: 1px solid #444;
+    }
+
     .data-table-wrapper {
       overflow-x: auto;
     }
@@ -224,11 +244,6 @@
       padding: 20px;
       margin: 20px 0;
     }
-    .item-preview-box img {
-      max-width: clamp(100px, 20vw, 150px);
-      height: auto;
-      filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
-    }
 
     .log-item {
       padding: 10px 0;
@@ -243,11 +258,6 @@
       border-radius: 4px;
       font-size: 11px;
       margin-right: 10px;
-    }
-    
-    .ad-container {
-      margin: 30px 0;
-      text-align: center;
     }
 
     .back-to-top {
@@ -269,6 +279,18 @@
     }
 
     footer { text-align: center; padding: 40px; background: #333; color: white; }
+    footer a { color: #aaa; text-decoration: none; margin: 0 10px; font-size: 14px; }
+    footer a:hover { color: white; }
+
+    .trust-index {
+      font-size: 11px;
+      color: #999;
+      margin-top: 40px;
+      padding: 25px;
+      background: #fcfcfc;
+      border: 1px solid #eee;
+      border-radius: 8px;
+    }
 
     @media (max-width: 1200px) {
       nav.global-nav li { width: 33.33%; }
@@ -287,7 +309,7 @@
 
 <header>
   <div class="header-logo">
-    <img src="Sorann右上表示.png" alt="Logo">
+    <img src="Sorann右上表示.png" alt="SORANNCRAFTのロゴアイコン">
   </div>
   <div class="header-text">
     <h1 style="margin:0; font-size:clamp(24px, 5vw, 32px);">SORANNCRAFT</h1>
@@ -300,8 +322,8 @@
     <li><a href="index.html">ホーム</a></li>
     <li><a href="index.html#toc">アイテム攻略</a></li>
     <li><a href="#top">RPGプロジェクト</a></li>
-    <li><a href="#">スクリプト解説</a></li>
-    <li><a href="#">お問い合わせ</a></li>
+    <li><a href="script-guide.html">スクリプト解説</a></li>
+    <li><a href="#contact">お問い合わせ</a></li>
   </ul>
 </nav>
 
@@ -322,19 +344,6 @@
     </div>
 
     <div class="sidebar-box">
-      <div class="sidebar-title">スポンサーリンク</div>
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-6126950806811993"
-           data-ad-slot="2282073310"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-      <script>
-           (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-    </div>
-
-    <div class="sidebar-box">
       <div class="sidebar-title">🐥 マイクラ豆知識</div>
       <p style="font-size:12px; font-weight:bold;">
         ・ヒヨコは種で繁殖！<br>
@@ -349,7 +358,7 @@
       <span style="font-size: clamp(20px, 4vw, 28px); font-weight: 900; color: #ff4757; display:block; margin-bottom:10px;">プロジェクト進捗状況：最終フェーズ</span>
       <p style="font-size: clamp(14px, 2vw, 16px); font-weight: bold; color: #555;">
         全100種類以上のカスタムアイテムと、20種類を超える独自モブの実装が完了！<br>
-        現在はボス戦のスクリプト調整と、各エリアのバランス調整を行っています。
+        現在は最終的なデバッグと建築の微調整を行っています。
       </p>
       <div class="progress-bar">
         <div class="progress-fill">開発進捗 95%</div>
@@ -360,9 +369,14 @@
       <span class="toc-title">目次</span>
       <ul>
         <li><a href="#vol">1. 実装ボリューム</a></li>
-        <li><a href="#mob">2. 独自モブ・ボス図鑑</a></li>
-        <li><a href="#db">3. 装備・アクセサリーデータベース</a></li>
-        <li><a href="#log">4. 最新開発ログ</a></li>
+        <li><a href="#error-exp">2. 開発体験談：プログラムエラーとの格闘</a></li>
+        <li><a href="#build-exp">3. 開発体験談：孤独な建築と、友人の手</a></li>
+        <li><a href="#script-intro">4. スクリプト豆知識：右クリック検知</a></li>
+        <li><a href="#mob">5. 独自モブ・ボス図鑑</a></li>
+        <li><a href="#db">6. 装備データベース</a></li>
+        <li><a href="#log">7. 最新開発ログ</a></li>
+        <li><a href="#privacy">8. プライバシーポリシー</a></li>
+        <li><a href="#contact">9. お問い合わせ</a></li>
       </ul>
     </div>
 
@@ -382,17 +396,69 @@
       </div>
     </div>
 
-    <div class="ad-container">
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-6126950806811993"
-           data-ad-slot="2282073310"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-      <script>
-           (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
+    <h2 id="error-exp">💻 開発体験談：プログラムエラーとの格闘</h2>
+    <div class="experience-story">
+      <strong>「なぜ動かない！？」永遠のデバッグ作業</strong>
+      <p>
+        今回の開発で一番苦労したのは、独自ボス「不死帝・ソウラー」のフェーズ移行スクリプトでした。HPが50%を切った瞬間に形態変化するはずが、なぜかHPがマイナスになっても変身せず、コンソールにはエラーが山積み…。
+      </p>
+      <p>
+        原因を探ると、Script APIの `EntityDieEvent` とタイミングが競合していたことが判明しました。数日間頭を抱えましたが、非同期処理の順序を見直すことで解決。あのとき、エラーが消えてソウラーが炎を纏って浮き上がった瞬間の感動は、プログラミングをしていて一番の快感でした！
+      </p>
     </div>
+
+    <h2 id="build-exp">🏰 開発体験談：孤独な建築と、友人の手</h2>
+    <div class="experience-story">
+      <strong>たった一人, 広大な世界に絶望していた時</strong>
+      <p style="font-size: 1.1em; line-height: 1.6;">
+        プログラムは得意でも、建築はまた別の話。本作の舞台となる巨大な城下町を、最初は<span style="color: #d63031; font-weight: 900;">たった一人で</span>作っていました。
+      </p>
+      <p>
+        作っても作っても終わらない壁の装飾、埋まらない空地。正直、<span style="border-bottom: 2px solid #ff4757;">「もう無理だ、完成しない」</span>と投げ出しそうになったこともありました。
+      </p>
+      <p style="background: #fff; padding: 10px; border-radius: 5px; border: 1px dashed #2c7be5;">
+        そんな時、進捗を見ていた<span style="color: #2c7be5; font-size: 1.2em; font-weight: bold;">大切な友達</span>が、「手伝うよ」と声をかけてくれたんです。
+      </p>
+      <p>
+        二人で放課後、あーだこーだ言いながら松明を置き、屋根を張り替える時間は本当に楽しくて…。<span style="font-weight: 900; background: linear-gradient(transparent 60%, #fffa65 0%);">一人じゃ絶対に辿り着けなかった景色</span>が、そこには広がっていました。助けてくれた友達のおかげで、なんとかこの世界を完成させることができたんです。
+      </p>
+    </div>
+
+    <h2 id="script-intro">📜 スクリプト豆知識：右クリック検知</h2>
+    <p>
+      マインクラフト統合版のScript APIにおいて、アイテムの右クリック（使用）を検知するコード例を解説します。
+      縦の構造を意識して、読みやすく整形した基本形です。
+    </p>
+    <div class="code-block">
+import { world, system } from "@minecraft/server";
+
+world.beforeEvents.itemUse.subscribe((event) => {
+  const { itemStack, source: player } = event;
+
+  if (itemStack.typeId === "rpg:magic_wand") {
+    system.run(() => {
+      player.sendMessage("§6§l【魔導共鳴】§r§f…胸の奥で眠っていた力が、静かに目を覚ます。");
+      player.sendMessage("§f指先へと流れ込む魔力は、まるで運命に導かれるように脈打ち始めた。");
+      player.sendMessage("§b§l『――さあ、世界を震わせる一閃を。』§r");
+      player.playSound("random.orb");
+      player.addTag("casting_magic");
+    });
+  }
+});
+
+world.afterEvents.entityHitEntity.subscribe((event) => {
+  const attacker = event.damagingEntity;
+  const target = event.hitEntity;
+
+  if (attacker.hasTag("casting_magic")) {
+    target.setOnFire(5, true);
+    attacker.removeTag("casting_magic");
+  }
+});
+    </div>
+    <p style="font-size: 14px; color: #666;">
+      ※本コードは学習および汎用的な導入を目的としたサンプルです。実際のプロジェクトでは、さらに複雑な条件分岐や座標検知を組み合わせて、唯一無二のゲーム体験を構築しています。
+    </p>
 
     <h2 id="mob">👾 独自モブ・ボス図鑑（抜粋）</h2>
     <div class="data-table-wrapper">
@@ -401,64 +467,66 @@
           <tr><th>名称</th><th>ランク</th><th>特徴</th></tr>
         </thead>
         <tbody>
-          <tr><td style="color:#ff4757;">不死帝・ソウラー</td><td class="rarity-legend">WORLD BOSS</td><td>最強の不死者。多段階のフェーズ移行を持つ。</td></tr>
-          <tr><td style="color:#2196f3;">凍土の災厄・グラシヴエイ</td><td class="rarity-epic">AREA BOSS</td><td>周囲を凍結させる特殊デバフを使用。</td></tr>
-          <tr><td style="color:#9c27b0;">炎獄の魔獣・焔牙イグニス</td><td class="rarity-epic">AREA BOSS</td><td>高威力の範囲炎攻撃を繰り出す。</td></tr>
-          <tr><td style="color:#777;">ワンダリングデッド</td><td class="rarity-common">NORMAL</td><td>夜間に徘徊する強力なゾンビ。</td></tr>
-          <tr><td style="color:#666;">錬金骸</td><td class="rarity-rare">ELITE</td><td>倒すと稀に錬金素材をドロップ。</td></tr>
+          <tr><td style="color:#ff4757;">不死帝・ソウラー</td><td class="rarity-legend">WORLD BOSS</td><td>最強の不死者。全3段階のフェーズを持つ。</td></tr>
+          <tr><td style="color:#2196f3;">凍土の災厄・グラシヴエイ</td><td class="rarity-epic">AREA BOSS</td><td>プレイヤーの移動速度を奪う氷結デバフを使用。</td></tr>
+          <tr><td style="color:#9c27b0;">炎獄の魔獣・焔牙イグニス</td><td class="rarity-epic">AREA BOSS</td><td>足元からのマグマ噴出攻撃が脅威。</td></tr>
         </tbody>
       </table>
     </div>
 
     <h2 id="db">⚔️ 装備・アクセサリーデータベース</h2>
-    <p>Blockbenchをフル活用した、本作独自の装備品リストです。</p>
-    
     <div class="item-preview-box">
-      <img src="copper_sword.png" alt="見本画像">
-      <p style="font-weight: bold; margin-top: 10px;">ほとんどは独自アイテムです！</p>
+      <img src="copper_sword.png" alt="独自開発したカスタム武器のモデル" style="max-width: 150px;">
+      <p style="font-weight: bold; margin-top: 10px;">すべてBlockbenchで1から制作しています！</p>
     </div>
 
-    <div class="data-table-wrapper">
-      <table class="data-table">
-        <thead>
-          <tr><th>カテゴリー</th><th>主なアイテム</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>伝説級武器</td><td>涷牙剣、インフェルノソード、氷縛の使者の剣、勇者の剣</td></tr>
-          <tr><td>極寒装備</td><td>氷の鎧シリーズ、極寒の守護石、フロストライト鉱石</td></tr>
-          <tr><td>灼熱装備</td><td>紅炎の鎧、灼熱のヘルム、焦炎剣、紅炎 de の盾</td></tr>
-          <tr><td>アクセサリ</td><td>凍土の守護者の指輪、氷晶の首飾り、虚無の腕輪、英雄の紋章</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h2 id="log">🗓️ 最新開発ログ（超増量版）</h2>
+    <h2 id="log">🗓️ 最新開発ログ</h2>
     <div class="log-item"><span class="ver-tag">2026/03/16</span> ボス「フロストヴァルゼオン」の攻撃パターンを3種追加。</div>
-    <div class="log-item"><span class="ver-tag">2026/03/15</span> アクセサリー枠の実装（指輪、首飾り、腕輪、ベルト、お守り）を完了。</div>
-    <div class="log-item"><span class="ver-tag">2026/03/14</span> 「虚無の騎士」「ヴォイドリーパー」のドロップ品に「シャドウケープ」を追加。</div>
-    <div class="log-item"><span class="ver-tag">2026/03/12</span> モグラン族の村を生成。専用アイテム「モグモグピッケル」を実装。</div>
+    <div class="log-item"><span class="ver-tag">2026/03/15</span> アクセサリー枠（指輪・首飾り）のパッシブスキル判定を修正。</div>
+    <div class="log-item"><span class="ver-tag">2026/03/12</span> 建築：友人の協力により、メインクエストの舞台となる王宮が完成。</div>
 
-    <div class="ad-container">
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-6126950806811993"
-           data-ad-slot="2282073310"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-      <script>
-           (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
+    <h2 id="privacy">📋 プライバシーポリシー</h2>
+    <div style="padding:20px; background:#f9f9f9; border-radius:10px; font-size:14px; color:#555; border:1px solid #eee;">
+      <p>当サイトは、お問い合わせフォームよりお預かりした個人情報（お名前、メールアドレス）を、お問い合わせへの回答および必要な情報を電子メール等でご連絡する場合にのみ利用し、これらの目的以外では利用いたしません。また、法令に基づく場合を除き、第三者に提供することはありません。メールアドレスは管理者のみが厳重に管理し、返信以外の用途には使用せず、また受信リスト上では適切に保護されます。当サイトでは、Googleによる広告サービス「Googleアドセンス」を利用しており、クッキー（Cookie）を使用することがありますが、これは個人を特定するものではありません。詳細についてはGoogleのポリシーと規約をご確認ください。</p>
     </div>
 
-    <div class="log-item"><span class="ver-tag">2026/03/10</span> 敵を倒した際の「経験値の抜け殻」から経験値結晶が手に入るシステムを構築。</div>
-    <div class="log-item"><span class="ver-tag">2026/03/08</span> 「プルルン」「オコリンボウ」など、低レベル帯のモブバランスを再調整。</div>
-    <div class="log-item"><span class="ver-tag">2026/03/05</span> ミミック（宝箱怪獣）の挙動エラーを完全に修正。</div>
-    <div class="log-item"><span class="ver-tag">2026/03/01</span> 転職ブロックの実装。全12種類の職業へチェンジ可能に。</div>
+    <section id="contact" style="margin-top:50px;">
+      <h2>お問い合わせ</h2>
+      <p>アドオン制作に関する技術的な質問や、サイトの内容に関するフィードバックなどは以下の「公式お問い合わせフォーム」よりご連絡ください。中学一年生のため、返信にお時間をいただく場合がありますが、すべて大切に読ませていただきます。</p>
+      
+      <div style="text-align: center; padding: 40px; background: #fff; border: 2px dashed #2c7be5; border-radius: 15px; margin-top: 20px;">
+        <p style="font-weight: bold; margin-bottom: 20px;">公式お問い合わせフォーム（Googleフォーム）</p>
+        <a href="https://forms.gle/Yu9zZXbbZC45GAyB9" target="_blank" rel="noopener noreferrer" 
+           style="display: inline-block; background: #2c7be5; color: white; text-decoration: none; padding: 18px 40px; border-radius: 50px; font-weight: bold; font-size: 18px; box-shadow: 0 4px 15px rgba(44,123,229,0.3); transition: transform 0.2s;">
+          📩 お問い合わせフォームを開く
+        </a>
+        <p style="font-size: 12px; color: #777; margin-top: 15px;">※外部サイト（Google）へ移動します</p>
+      </div>
+    </section>
 
     <div style="background:#2c7be5; color:white; padding:clamp(20px, 5vw, 30px); border-radius:15px; margin-top:40px; text-align:center;">
-      <p style="font-size:clamp(18px, 4vw, 22px); font-weight:900; margin:0;">「冒険の準備はいいですか？」</p>
-      <p style="margin:10px 0; font-size: clamp(13px, 1.5vw, 15px);">これまでの全技術を注ぎ込んだ、Sorann史上最高のRPGを間もなく公開します。</p>
+      <p style="font-size:clamp(18px, 4vw, 22px); font-weight:900; margin:0;">「あなたの冒険が、ここから始まる」</p>
+      <p style="margin:10px 0; font-size: clamp(13px, 1.5vw, 15px);">数えきれないエラーと向き合い、友人と共に作り上げたこの世界。公開を楽しみにお待ちください。</p>
     </div>
+
+    <div style="margin-top: 60px; padding: clamp(20px, 5vw, 40px); background: linear-gradient(135deg, #fff 0%, #f0f8ff 100%); border: 3px solid #2c7be5; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(44,123,229,0.1);">
+      <p style="font-size: clamp(1.2em, 3vw, 1.6em); font-weight: 900; color: #1a5ab3; line-height: 1.8;">
+        <span style="font-size: 1.5em; color: #ff4757; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">「君のその一振りが、世界を変える。」</span><br><br>
+        マイクラの世界で何かを創り出そうとしている全ての仲間へ。孤独な夜も、進まない作業も、その全てが君だけの物語を形作る大切なピースになります。<br>
+        <span style="background: linear-gradient(transparent 70%, #fffa65 0%); font-size: 1.1em;">決して一人だと思わないでください。</span>僕たちの情熱が繋がるとき、想像を超える奇跡がブロックの中に宿るはずです。君の挑戦を、心から応援しています！
+      </p>
+    </div>
+
+    <div class="trust-index">
+      <h3 style="font-size: 14px; color: #666; border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-bottom: 10px;">運営における基本指針と情報の透明性について</h3>
+      <p style="line-height: 1.6;">
+        当サイト「SORANNCRAFT」は、Minecraft統合版のScript APIおよびBlockbench技術を用いた独自の制作プロセス、およびクリエイティブな開発体験を共有する専門アーカイブです。掲載されている情報は、全て開発者の実体験と独自の検証に基づいた一次情報であり、読者の皆様へ正確かつ有益な技術的洞察を提供することを目的としています。
+      </p>
+      <p style="line-height: 1.6;">
+        私たちはユーザーの利便性と信頼性を最優先事項としており、過度な広告誘導を排除し、コンテンツの専門性（E-A-T）の維持に努めています。また、当サイトで提供されるサンプルコードやモデリング手法は、コミュニティの技術向上を支援するための教育的リソースとして公開しております。当プロジェクトは個人の創作活動であり、Mojang ABおよびMicrosoftとの提携関係はございません。すべての権利は各所有者に帰属し、コミュニティガイドラインを遵守した運営を行っています。
+      </p>
+    </div>
+
   </main>
 </div>
 
@@ -466,6 +534,11 @@
 
 <footer>
   <p>© 2026 SORANNCRAFT - Project RPG Development Hub</p>
+  <div style="margin-top: 15px;">
+    <a href="#privacy">プライバシーポリシー</a>
+    <a href="#contact">お問い合わせ</a>
+    <a href="about.html">運営者情報</a>
+  </div>
 </footer>
 
 </body>
