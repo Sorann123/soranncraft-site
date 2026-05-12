@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>岩盤から [From The Bedrock] 配布ページ｜SORANNCRAFT</title>
+    <meta name="description" content="中学1年生の開発者Sorannによる、Minecraft統合版（BE）向け超高難度脱出マップ『岩盤から』の公式配布サイト。独自の物理演算ギミックと世界観を体験してください。">
     <style>
         body {
             margin: 0;
@@ -27,7 +29,7 @@
         .header-image {
             width: 100%;
             height: 300px;
-            background: linear-gradient(45deg, #000, #444);
+            background: linear-gradient(45deg, #000, #1a1a1a);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -57,6 +59,16 @@
             margin-bottom: 15px;
             border-bottom: 1px solid #444;
             padding-bottom: 5px;
+            margin-top: 40px;
+        }
+        .story-title {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 20px;
+        }
+        .story-text {
+            font-size: 1.2rem;
         }
         .feature-grid {
             display: grid;
@@ -107,34 +119,57 @@
             background-color: #27ae60;
             transform: translateY(-3px);
         }
-        .terms-box {
+        .dev-experience {
+            background-color: #252525;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #2ecc71;
+            margin-bottom: 40px;
+        }
+        .contact-box {
+            text-align: center;
+            padding: 40px;
+            background: #fff;
+            border: 2px dashed #2c7be5;
+            border-radius: 15px;
+            margin-top: 20px;
+            color: #333;
+        }
+        .btn-contact {
+            display: inline-block;
+            background: #2c7be5;
+            color: white;
+            text-decoration: none;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 4px 15px rgba(44,123,229,0.3);
+            transition: transform 0.2s;
+        }
+        .btn-contact:hover {
+            transform: scale(1.05);
+        }
+        .terms-box, .privacy-box {
             font-size: 0.85rem;
             color: #bbb;
             background: #222;
             padding: 25px;
             border-radius: 8px;
+            margin-bottom: 20px;
         }
         .terms-box ul {
             padding-left: 20px;
+        }
+        .site-link {
+            color: #3498db;
+            text-decoration: underline;
         }
         .footer-note {
             text-align: center;
             margin-top: 30px;
             color: #666;
             font-size: 0.8rem;
-        }
-        .story-title {
-            font-size: 2rem;
-            font-weight: bold;
-            display: block;
-            margin-bottom: 20px;
-        }
-        .story-text {
-            font-size: 1.2rem;
-        }
-        .site-link {
-            color: #3498db;
-            text-decoration: underline;
         }
     </style>
 </head>
@@ -156,42 +191,40 @@
                     意識を取り戻したあなたの視界を塞いだのは、本来世界の底にあるはずの、破壊不能な**「岩盤」**の壁だった。<br><br>
 
                     なぜ、空の頂に地の底が口を開けているのか。<br>
-                    その答えを知るのは、この非人道的な「天空の牢獄」を築き上げたSorannの手下たちのみである。彼らは主（あるじ）の命に従い、マイクラ世界の理を歪め、物理法則が複雑に絡み合うこの密室を完成させた。<br><br>
+                    その答えを知るのは、この非人道的な「天空の牢獄」を築き上げたSorannの手下たちのみである。<br><br>
 
-                    足元に広がるのは、救いではなく「深淵」<br>
-                    脱出口はない。唯一残された道は、足元に広がる虚空へと身を投じ、手下たちが仕掛けた残忍なまでの物理ギミックを一つずつ解き明かすこと。<br><br>
+                    足元に広がるのは、救いではなく「深淵」。脱出口はない。唯一残された道は、足元に広がる虚空へと身を投じ、手下たちが仕掛けた残忍なまでの物理ギミックを一つずつ解き明かすこと。<br><br>
 
-                    しかし、忘れてはならない。<br>
-                    あなたが釣り竿を振るい、慣性と重力の狭間で必死に抗うその姿は、すべて黒幕・Sorannの掌の上にあるということを。<br><br>
-
-                    彼はモニターの向こう側から、あなたが絶望し、そして「知力」という名の細い糸を辿って這い上がってくる様子を、静かな愉悦とともに見守っている。<br><br>
-
-                    これは単なる脱出ではない。<br>
-                    黒幕・Sorannが仕掛けた、知の限界を試すための「高潔な実験」なのだ。<br>
-                    高度限界の孤独の中、あなたは手下たちの監視を振り切り、支配者の待つ地上へと辿り着けるだろうか。<br><br>
-                    マイクラの常識を捨てろ。物理演算を疑え。この「岩盤」という名の牢獄から地上へと這い上がる、孤独で知的な冒険が今始まる。
+                    支配者・Sorannの待つ地上へと辿り着けるだろうか。マイクラの常識を捨てろ。物理演算を疑え。
                 </div>
-                <p style="margin-top: 15px; font-size: 0.9rem; color: #2ecc71;">※本マップでは自作音楽を使用しております。</p>
+                <p style="margin-top: 15px; font-size: 0.9rem; color: #2ecc71;">※本マップでは自作BGMを使用しております。</p>
                 <p style="margin-top: 15px;"><a href="https://sorann123.github.io/" class="site-link">公式サイト：SORANNCRAFT</a></p>
             </section>
+
+            <h2 class="section-title">DEVELOPER'S EXPERIENCE</h2>
+            <div class="dev-experience">
+                <p><strong>制作の背景とこだわり</strong></p>
+                <p>このマップ『岩盤から』は、僕が中学1年生になって初めて「統合版マインクラフトの物理仕様」を徹底的に研究して作り上げた作品です。通常の脱出ゲームのような「鍵を探す」要素ではなく、「重力」「速度」「エンティティの判定」をどう利用するかという点に全力を注ぎました。</p>
+                <p>特に釣り竿を使った慣性移動のギミックは、何度もデバッグを繰り返し、ミリ単位の調整を行っています。プレイヤーが「不可能だ」と思った瞬間に、マイクラの仕様を理解することで道が開ける――そんな知的な快感を提供することを目指しました。</p>
+            </div>
 
             <h2 class="section-title">FEATURES</h2>
             <div class="feature-grid">
                 <div class="feature-item">
                     <strong>釣り竿の極限活用</strong><br>
-                    単なる道具ではない。エンティティを引き寄せ、慣性を操り、時空を繋ぐ「鍵」として活用せよ。
+                    エンティティを引き寄せ、慣性を操り、時空を繋ぐ「鍵」として活用せよ。
                 </div>
                 <div class="feature-item">
                     <strong>統合版物理謎解き</strong><br>
-                    ボートの挙動、アイテムの判定、モブの習性。統合版（BE）ならではの仕様をフル活用したギミック。
+                    ボートの挙動やアイテム判定など、統合版（BE）ならではの仕様をフル活用。
                 </div>
                 <div class="feature-item">
                     <strong>圧倒的な世界観</strong><br>
-                    深淵から地上へ向かう一歩に繋がるたび,景色が一変する。
+                    深淵から地上へ向かう一歩ごとに、孤独と緊張感が募る設計。
                 </div>
                 <div class="feature-item">
                     <strong>高難度パズル</strong><br>
-                    初心者お断り。マイクラの仕様を知り尽出だした者だけが辿り着ける「正解」がそこにある。
+                    マイクラの仕様を知り尽くした者だけが辿り着ける「正解」を配置。
                 </div>
             </div>
 
@@ -199,33 +232,49 @@
             <table class="info-table">
                 <tr><th>マップ名</th><td>岩盤から (From The Bedrock)</td></tr>
                 <tr><th>ジャンル</th><td>超高難度脱出ゲーム / 謎解きアドベンチャー</td></tr>
-                <tr><th>対応OS</th><td>Windows / iOS / Android / Switch (統合版)</td></tr>
+                <tr><th>対応環境</th><td>統合版（Windows / iOS / Android / Switch）</td></tr>
                 <tr><th>推奨Ver</th><td>1.20.x 以降推奨</td></tr>
-                <tr><th>想定プレイ時間</th><td>30分 〜 120分（ひらめき次第）</td></tr>
-                <tr><th>マルチプレイ</th><td>1人推奨（複数人でもプレイ可能ですが、難易度が変化します）</td></tr>
+                <tr><th>プレイ人数</th><td>1人推奨（マルチ可）</td></tr>
             </table>
 
             <div class="download-area">
-                <p style="margin-bottom: 20px; font-weight: bold;">最新バージョンのダウンロードはこちら</p>
-                <a href="岩盤から[From the bedrock].mcworld" download="岩盤から[From the bedrock].mcworld" class="btn-download">岩盤から[From the bedrock].mcworld</a>
+                <p style="margin-bottom: 20px; font-weight: bold;">配布ファイルはこちら</p>
+                <a href="岩盤から[From the bedrock].mcworld" download class="btn-download">岩盤から[From the bedrock].mcworld</a>
                 <p style="font-size: 0.8rem; margin-top: 15px; color: #888;">Size: 約 5.2 MB / Ver 1.0.0</p>
             </div>
 
-            <h2 class="section-title">TERMS OF USE</h2>
+            <section id="contact">
+                <h2 class="section-title">CONTACT</h2>
+                <p>制作に関する技術的な質問や、不具合報告、サイト内容へのフィードバックなどは以下のフォームよりご連絡ください。中学一年生のため、返信にお時間をいただく場合がありますが、すべて大切に読ませていただきます。</p>
+                <div class="contact-box">
+                    <p style="font-weight: bold; margin-bottom: 20px;">公式お問い合わせフォーム（Googleフォーム）</p>
+                    <a href="https://forms.gle/Yu9zZXbbZC45GAyB9" target="_blank" rel="noopener noreferrer" class="btn-contact">
+                        📩 お問い合わせフォームを開く
+                    </a>
+                    <p style="font-size: 12px; color: #777; margin-top: 15px;">※外部サイトへ移動します</p>
+                </div>
+            </section>
+
+            <h2 class="section-title">PRIVACY POLICY & TERMS</h2>
+            <div class="privacy-box">
+                <p><strong>プライバシーポリシーについて</strong></p>
+                <p>当サイトでは、第三者配信の広告サービス「Googleアドセンス」を利用しています。広告配信事業者は、ユーザーの興味に応じた広告を表示するためにCookieを使用することがあります。Cookieを無効にする設定およびGoogleアドセンスに関する詳細は「Googleポリシーと規約」をご覧ください。また、お問い合わせフォームにて取得した個人情報は、返信目的以外には利用いたしません。</p>
+            </div>
+
             <div class="terms-box">
-                <strong>利用規約（必ずお読みください）</strong>
+                <p><strong>利用規約</strong></p>
                 <ul>
-                    <li><strong>動画配信・SNS投稿について：</strong> 大歓迎です！事前連絡は不要ですが、概要欄に本サイト「SORANNCRAFT」へのリンクを記載してください。</li>
-                    <li><strong>二次配布の禁止：</strong> 改変の有無を問わず、本ワールドデータの再配布を固く禁じます。</li>
-                    <li><strong>商用利用：</strong> 法人による利用、または有料コンテンツとしての利用は個別にお問い合わせください。</li>
-                    <li><strong>免責事項：</strong> 本マップの使用により発生したいかなるトラブル・損失に対しても、制作者は一切の責任を負いません。</li>
+                    <li><strong>配信・投稿：</strong> 大歓迎です！概要欄に「SORANNCRAFT」の名称とリンクを記載してください。</li>
+                    <li><strong>二次配布：</strong> 改変の有無を問わず、本データの再配布を固く禁じます。</li>
+                    <li><strong>免責事項：</strong> 本マップの使用により発生したいかなる損害に対しても、制作者は一切の責任を負いません。</li>
                 </ul>
             </div>
         </div>
     </article>
 
     <div class="footer-note">
-        &copy; 2026 SORANNCRAFT - Created by Sorann JHS 1st Grade
+        &copy; 2026 SORANNCRAFT - Created by Sorann JHS 1st Grade<br>
+        Minecraft is a trademark of Mojang Synergies AB.
     </div>
 </div>
 
